@@ -1,7 +1,11 @@
 import { Button, Flex, Input } from "@chakra-ui/react";
 import React from "react";
 
-const GifInput = () => {
+interface IGifInput {
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
+}
+
+const GifInput: React.FC<IGifInput> = ({ onClick }) => {
   return (
     <Flex
       dir="row"
@@ -11,7 +15,13 @@ const GifInput = () => {
       w="100%"
     >
       <Input variant="filled" size="md" />
-      <Button marginX={4} colorScheme="blue" isLoading={false} type="submit">
+      <Button
+        onClick={onClick}
+        marginLeft={4}
+        colorScheme="blue"
+        isLoading={false}
+        type="submit"
+      >
         Search
       </Button>
     </Flex>
