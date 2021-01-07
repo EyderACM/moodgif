@@ -6,6 +6,7 @@ export const HomeWrapper: React.FC = ({ children }) => (
     display="flex"
     height="100vh"
     width="100vw"
+    paddingX="10px"
     alignItems="center"
     justifyContent="center"
   >
