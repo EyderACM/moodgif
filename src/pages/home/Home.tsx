@@ -1,8 +1,8 @@
 import React from "react";
 import { Flex, Stack } from "@chakra-ui/react";
-import NightmodeToggle from "src/pages/components/NighmodeToggle";
-import { Header, HomeWrapper } from "./components/atoms";
-import GifInput from "./components/molecules/GifInput";
+import { Header, HomeWrapper } from "../components/atoms/home";
+import GifInput from "../components/molecules/GifInput";
+import NightmodeToggle from "pages/components/molecules/NightmodeToggle";
 
 const Home = () => {
   return (
