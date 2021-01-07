@@ -1,13 +1,8 @@
-import Head from "next/head";
+import { ChakraProvider } from "@chakra-ui/react";
+import Home from "./home";
 
-export default function Home() {
-  return (
-    <div>
-      <Head>
-        <title>Moodgif</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Home />
-    </div>
-  );
-}
+export default () => (
+  <ChakraProvider>
+    <Home />
+  </ChakraProvider>
+);
