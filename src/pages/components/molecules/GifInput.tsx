@@ -3,9 +3,10 @@ import React from "react";
 
 interface IGifInput {
   onClick: React.MouseEventHandler<HTMLButtonElement>;
+  isLoading: Boolean;
 }
 
-const GifInput: React.FC<IGifInput> = ({ onClick }) => {
+const GifInput: React.FC<IGifInput> = ({ onClick, isLoading }) => {
   return (
     <Flex
       dir="row"
@@ -19,7 +20,7 @@ const GifInput: React.FC<IGifInput> = ({ onClick }) => {
         onClick={onClick}
         marginLeft={4}
         colorScheme="blue"
-        isLoading={false}
+        isLoading={isLoading}
         type="submit"
       >
         Search

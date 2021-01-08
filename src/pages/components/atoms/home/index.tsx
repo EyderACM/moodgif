@@ -20,7 +20,7 @@ export const Header: React.FC = () => (
       Welcome to Moodgif
     </Text>
     <Text marginLeft="3px" fontSize="sm" color="gray.500">
-      Define your mood, we find the Gif.
+      Define your mood, we find the gif.
     </Text>
   </Flex>
 );
