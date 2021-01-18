@@ -2,30 +2,41 @@ import { Button, Flex, Input } from "@chakra-ui/react";
 import React from "react";
 
 interface IGifInput {
-  onClick: React.MouseEventHandler<HTMLButtonElement>;
-  isLoading: Boolean;
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  isLoading: boolean;
+  refRegister: any;
 }
 
-const GifInput: React.FC<IGifInput> = ({ onClick, isLoading }) => {
+const GifInput: React.FC<IGifInput> = ({
+  handleSubmit,
+  isLoading,
+  refRegister,
+}) => {
   return (
-    <Flex
-      dir="row"
-      alignItems="center"
-      justifyContent="center"
-      paddingTop="20px"
-      w="100%"
-    >
-      <Input variant="filled" size="md" />
-      <Button
-        onClick={onClick}
-        marginLeft={4}
-        colorScheme="blue"
-        isLoading={isLoading}
-        type="submit"
+    <form onSubmit={handleSubmit}>
+      <Flex
+        dir="row"
+        alignItems="center"
+        justifyContent="center"
+        paddingTop="20px"
+        w="100%"
       >
-        Search
-      </Button>
-    </Flex>
+        <Input
+          ref={refRegister}
+          name="searchValue"
+          variant="filled"
+          size="md"
+        />
+        <Button
+          marginLeft={4}
+          colorScheme="blue"
+          isLoading={isLoading}
+          type="submit"
+        >
+          Search
+        </Button>
+      </Flex>
+    </form>
   );
 };
 

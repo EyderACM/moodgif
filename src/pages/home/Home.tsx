@@ -5,22 +5,22 @@ import GifInput from "../components/molecules/GifInput";
 import NightmodeToggle from "pages/components/molecules/NightmodeToggle";
 import { motion } from "framer-motion";
 import gifService from "services/gifService";
+import { useForm } from "react-hook-form";
 
 const Home = () => {
-  const [wasClicked, setWasClicked] = useState<Boolean>(false);
-  const [isImgLoading, setIsLoading] = useState<Boolean>(false);
+  const { register, handleSubmit } = useForm();
+  const [wasClicked, setWasClicked] = useState<boolean>(false);
+  const [isImgLoading, setIsLoading] = useState<boolean>(false);
   const [imgUrl, setImgUrl] = useState<string>();
 
-  const onSearch = async (e: React.MouseEvent<HTMLElement>) => {
+  const onSearch = async ({ searchValue }: any) => {
     setWasClicked(true);
     setIsLoading(true);
-
-    const { data } = await gifService.getGifs({ query: "holi" });
+    const { data } = await gifService.getGifs({ query: searchValue });
     setIsLoading(false);
 
     const randomNumber = Math.floor(Math.random() * 50);
     setImgUrl(data[randomNumber].images.original.url);
-    console.log(data[randomNumber]);
   };
 
   return (
@@ -59,14 +59,18 @@ const Home = () => {
                 initial={{ opacity: 0, x: -150 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
               >
-                <GifInput isLoading={isImgLoading} onClick={onSearch} />
+                <GifInput
+                  isLoading={isImgLoading}
+                  handleSubmit={handleSubmit(onSearch)}
+                  refRegister={register}
+                />
               </motion.div>
             </Stack>
           </motion.div>
         </Flex>
         {imgUrl && (
           <Img
-            alt="Dan Abramov"
+            borderRadius="15px"
             pos="fixed"
             objectFit="cover"
             height="300px"
